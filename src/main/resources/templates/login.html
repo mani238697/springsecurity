@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        h1 {
+            color: #673ab7;
+        }
+        /* Form styles */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        table td {
+            padding: 5px;
+        }
+        input[type="username"],
+        input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #673ab7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #5a2d9d;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Login Page</h1>
+
+<div class="container">
+    <form id="loginForm" action="/login" method="post">
+
+    <table>
+            <tr>
+                <td><label for="Username">Username:</label></td>
+                <td><input type="text" id="username" name="username" placeholder="Enter your username" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" name="password" placeholder="Enter your password" required></td>
+            </tr>
+        </table>
+        <input type="submit" value="Login">
+<!--        <p id="loginSuccessMessage" style="display: none; color: green;">Login successful! Redirecting...</p>-->
+
+    </form>
+</div>
+
+<!--<script>-->
+<!--    document.getElementById("loginForm").addEventListener("submit", function(event) {-->
+<!--        event.preventDefault();-->
+<!--        // Here you can add your login logic-->
+<!--        // For now, let's just display the success message-->
+<!--        document.getElementById("loginSuccessMessage").style.display = "block";-->
+<!--        // You can redirect the user to another page after successful login if needed-->
+<!--        // window.location.href = "/dashboard";-->
+<!--    });-->
+<!--</script>-->
+
+</body>
+</html>

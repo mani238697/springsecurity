@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        h1 {
+            color: #673ab7;
+        }
+        /* Form styles */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        table th,
+        table td {
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+        input[type="text"],
+        input[type="username"],
+        input[type="password"],
+        select {
+            width: calc(100% - 22px);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #673ab7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #5a2d9d;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Registration Page</h1>
+
+<div class="container">
+
+    <form id="registrationForm" action="/register" method="post">
+        <table>
+            <tr>
+                <td><label for="Fullname">Name:</label></td>
+                <td><input type="text" id="Fullname" name="Fullname" placeholder="Enter your name" required></td>
+            </tr>
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input type="text" id="username" name="username" placeholder="Choose a username" required></td>
+
+            </tr>
+<!--            <tr th:if="${userExists}">-->
+<!--                <td colspan="2"><span style="color: red;">Username is already taken</span></td>-->
+<!--            </tr>-->
+
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" name="password" placeholder="Enter a password" required></td>
+            </tr>
+        </table>
+
+        <div>
+            <input type="submit" value="Register">
+        </div>
+<!--        <p id="successMessage" style="display: none; color: green;">Registration successful! You can now <a href="/login">login</a>.</p>-->
+
+    </form>
+    <!-- Display userExists message if username is already taken -->
+    <p th:if="${userExists}" style="color: red;">Username is already taken</p>
+    <!-- Display success message if registration is successful -->
+    <p th:if="${successMessage}" style="color: green;">[[${successMessage}]]</p>
+    <!-- Login option for already registered users -->
+    <p>If you are already registered, <a href="/login">click here</a> to login.</p>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #6a0dad;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .logout-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .logout-link a {
+            color: #6a0dad;
+            text-decoration: none;
+        }
+
+        .logout-link a:hover {
+            color: #4a0080;
+        }
+
+        input[type="submit"] {
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4a0080;
+        }
+    </style>
+</head>
+<body>
+
+<h2>User List</h2>
+
+<form action="/users/deleteAll" method="post">
+    <input type="submit" value="Delete All Users">
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Fullname</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.Fullname}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.password}"></td>
+        <td>
+            <form action="/user/delete/{id}" method="post" th:action="@{/user/delete/{id}(id=${user.id})}">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="logout-link">
+    <a href="/logout">Logout</a>
+</div>
+
+</body>
+</html>
